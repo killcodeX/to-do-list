@@ -18,8 +18,8 @@ function addTodo(e){
     event.preventDefault();
 
     // Todo div
-    const todoDiv = document.createElement('div');
-    todoDiv.classList.add('todo');
+    const todoDiv = document.createElement("div");
+    todoDiv.classList.add("todo");
 
     // Create li
     const newTodo = document.createElement('li');
@@ -33,13 +33,13 @@ function addTodo(e){
     // check mark button
     const completedButton = document.createElement('button');
     completedButton.innerHTML = "<i class='fas fa-check'></i>";
-    completedButton.classList.add('complete-btn');
+    completedButton.classList.add("complete-btn");
     todoDiv.appendChild(completedButton);
 
     // check trash button
     const trashButton = document.createElement('button');
     trashButton.innerHTML = "<i class='fas fa-trash'></i>";
-    trashButton.classList.add('trash-btn');
+    trashButton.classList.add("trash-btn");
     todoDiv.appendChild(trashButton);
 
     // append to list
@@ -58,8 +58,9 @@ function deleteCheck(e) {
         const todo = item.parentElement;
         todo.classList.add('fall');
         removeLocalTodos(todo);
+
         // wait for animations
-        todo.addEventListener('transitioned', function(){
+        todo.addEventListener('transitionend', function(){
             todo.remove();
         });
     }
@@ -150,7 +151,7 @@ function getTodos(){
 function removeLocalTodos(todo){
     // check----Hey do i already have thing in there
     let todos;
-    if(localStorage.getItem('todos') === null){
+    if(localStorage.getItem('todos') === null){ 
         todos = [];
     }else{
         todos = JSON.parse(localStorage.getItem('todos'));
